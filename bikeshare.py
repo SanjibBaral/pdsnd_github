@@ -28,6 +28,13 @@ def get_filters():
         else:
             print("\nInvalid City"+"!"*5)
             print("One of the following cities are valid entries:\n Chicago\n New York City\n Washington")
+    # get use input whether to filter data by month and day or the week or not
+    print('\n Do you want to filter data by month and day of the week?')
+    filter=input('Yes or No')
+    if filter.lower()=='no':
+        month='all'
+        day='all'
+        return city, month, day
     # get user input for month (all, january, february, ... , june). Using loop to handle invalid inputs
     while True:
         print("\nDo you want to look at all months data or only one month? (Type 'all' for all months or type month's name)")

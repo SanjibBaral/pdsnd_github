@@ -28,6 +28,13 @@ def get_filters():
         else:
             print("\nInvalid City"+"!"*5)
             print("One of the following cities are valid entries:\n Chicago\n New York City\n Washington")
+    # get use input whether to filter data by month and day or the week or not
+    print('\n Do you want to filter data by month and day of the week?')
+    filter=input('Yes or No')
+    if filter.lower()=='no':
+        month='all'
+        day='all'
+        return city, month, day
     # get user input for month (all, january, february, ... , june). Using loop to handle invalid inputs
     while True:
         print("\nDo you want to look at all months data or only one month? (Type 'all' for all months or type month's name)")
@@ -52,7 +59,6 @@ def get_filters():
 
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
@@ -92,8 +98,6 @@ def load_data(city, month, day):
     print(df['day_of_week'].mode()[0])
     return df
 
-
-
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -126,7 +130,6 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -150,7 +153,6 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -165,7 +167,6 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
@@ -199,11 +200,13 @@ def user_stats(df):
         print("Birth Year Information about customer not available.")
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
 def print_series(input_series):
     data=input_series.values
     indices=input_series.index
     for d,index in zip(data,indices):
         print("{}: {}".format(index,d))
+
 def display_raw_data(df):
     """This function prints the 5 line of raw data from a
     data frame until user wants to stop it."""
@@ -218,6 +221,7 @@ def display_raw_data(df):
         print(df[start_row:end_row])
         start_row=end_row
         end_row+=5
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -227,11 +231,10 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        display_raw_data(df)
+        #display_raw_data(df)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-
 
 if __name__ == "__main__":
 	main()

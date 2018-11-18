@@ -1,6 +1,11 @@
 ### Date created
 11/17/2018
 
+###System Requirement
+Following is the information on Python version and Python Library Version used for this project.
+`Python Version 3`
+`Pandas Version 0.23`
+`Numpy Version 1.14.3`
 ### Project Title
 Exploring US Bikeshare Data
 
